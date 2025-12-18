@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Air Heater Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.css" rel="stylesheet">
+</head>
+<body>
+    <header class="w-full  py-4 shadow-lg flex justify-between px-8">
+        <nav class="navbar bg-base-200/100 shadow-lg px-8">
+            <div class="flex-1">
+                <a class="text-xl font-bold">Air Heater Monitoring</a>
+            </div>
+
+            <div class="flex-none gap-4">
+
+
+                <label class="swap swap-rotate">
+                    <input type="checkbox" id="theme-toggle"/>
+
+                    <!-- sun icon -->
+                    <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M5.64 17l-.71.71a1 1 0 0 0 1.41 1.41l.71-.71A1 1 0 0 0 5.64 17zM12 18a6 6 0 1 0-6-6 6 6 0 0 0 6 6zm8 1a1 1 0 0 0 .71-1.71l-.71-.71a1 1 0 1 0-1.41 1.41l.71.71A1 1 0 0 0 20 19zm1-7h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zM4 12H3a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zm15.66-6.66a1 1 0 0 0-1.41 0l-.71.71A1 1 0 0 0 19.66 7l.71-.71a1 1 0 0 0 0-1.41zM12 4a1 1 0 0 0 1-1V2a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1z"></path>
+                    </svg>
+
+                    <!-- moon icon -->
+                    <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21z"></path>
+                    </svg>
+                </label>
+
+
+                <a style="margin-right:10px " href="{% url "login" %}" class="btn btn-sm">Login</a>
+                <a style="margin-right:10px " href="{% url "register" %}" class="btn btn-sm btn-primary ">Signup</a>
+            </div>
+        </nav>
+    </header>
+<div class= "bg-base-200 min-h-screen flex flex-col items-center justify-center">
+  <h1 class="text-3xl font-bold mb-6">Welcome to Air Heater</h1>
+
+  <div class="flex gap-4">
+    <a href="{% url "temperature" %}" class="btn btn-primary">View Temperature Chart</a>
+    <a href="{% url "login" %}" class="btn btn-secondary">Login</a>
+    <a href="{% url "register" %}" class="btn btn-accent">Register</a>
+  </div>
+</div>
+<script>
+
+        const toggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+
+        if (localStorage.theme === "dark") {
+            html.setAttribute("data-theme", "dark");
+            toggle.checked = true;
+        } else {
+            html.setAttribute("data-theme", "light");
+        }
+
+
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                html.setAttribute("data-theme", "dark");
+                localStorage.theme = "dark";
+            } else {
+                html.setAttribute("data-theme", "light");
+                localStorage.theme = "light";
+            }
+        });
+    </script>
+</body>
+</html>
